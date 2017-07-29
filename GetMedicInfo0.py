@@ -57,6 +57,8 @@ def getContent(url):
             details_list.append(x.xpath("string(.)"))
 
 # .xpath("string(.)") to get the whole content in the tag, ignoring the effect of the sub tag
+# if there exsit at least two properties, and operator allows you to combine them. for example: "//div[@id='content and @class='button']"
+# Search XPath rules tosee more details
         details_list.append(html.xpath("//div[@id='content']/p[last()]")[0].xpath("string(.)"))
         details_list.append(html.xpath("//div[@id='tab1']")[0].xpath("string(.)"))
     except:
