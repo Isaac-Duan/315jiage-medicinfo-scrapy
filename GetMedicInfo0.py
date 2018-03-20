@@ -34,6 +34,7 @@ def getPageBrief(cur_url):
         html = etree.HTML(r.text)
         tmpl = html.xpath("//div[@class='title text-oneline']/a/@href")
         # last() means the last attribution
+        #双斜杠表示中间可以隔任意多的层
         next_addr = html.xpath("//div[@class='pager']//li[last()-1]/a")[0].attrib["href"][3:]
     except:
         print("It is the last page")
@@ -58,7 +59,7 @@ def getContent(url):
 
 # .xpath("string(.)") to get the whole content in the tag, ignoring the effect of the sub tag
 # if there exsit at least two properties, and operator allows you to combine them. for example: "//div[@id='content and @class='button']"
-# Search XPath rules tosee more details
+# Search XPath rules to see more details
         details_list.append(html.xpath("//div[@id='content']/p[last()]")[0].xpath("string(.)"))
         details_list.append(html.xpath("//div[@id='tab1']")[0].xpath("string(.)"))
     except:
